@@ -10,5 +10,10 @@ pipeline {
                  '''
              }
          }
+	 stage('Docker Build') {
+	     steps {
+		 sh 'docker build -t simple-nginx .'
+	     }
+	 }
      }
 }
