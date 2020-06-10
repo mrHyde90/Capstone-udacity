@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  
+  tasks:
+  - name: build coker nginx image
+    command: docker build -t simple-nginx .
+    args:
+      chdir: /home/ansadmin/Capstone-udacity
