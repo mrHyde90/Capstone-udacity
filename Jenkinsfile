@@ -10,9 +10,9 @@ pipeline {
                  '''
              }
          }
-	 stage('Docker Build') {
+	 stage('ansible Build') {
 	     steps {
-		 sh 'docker build -t simple-nginx .'
+		 sh 'ansible-playbook -i hosts simple-devops-image.yml'
 	     }
 	 }
      }
