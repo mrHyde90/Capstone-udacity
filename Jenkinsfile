@@ -12,7 +12,7 @@ pipeline {
          }
 	 stage('ansible Build') {
 	     steps {
-		 sh 'ansible-playbook -i hosts simple-devops-image.yml'
+		 sh 'docker build -t simple-nginx . '
 	     }
 	 }
      }
