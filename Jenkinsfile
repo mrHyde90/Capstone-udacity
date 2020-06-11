@@ -1,7 +1,7 @@
 pipeline {
      agent any
      stages {
-         stage('Build') {
+         stage('Linting') {
              steps {
                  sh 'echo "Hello World and U crazy little programmer"'
                  sh '''
@@ -10,9 +10,14 @@ pipeline {
                  '''
              }
          }
-	 stage('ansible Build') {
+	 stage('Build docker image') {
 	     steps {
-		 sh 'docker build -t simple-nginx . '
+		 sh './run_docker.sh '
+	     }
+	 }
+	 stage('Upload docker image to docker hub') {
+	     steps {
+		sh './upload_docker.sh'
 	     }
 	 }
      }
