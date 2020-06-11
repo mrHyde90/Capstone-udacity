@@ -1,4 +1,9 @@
 pipeline {
+     environment {
+	 registry = "wolusiter1990/udacity_capstone"
+	 registryCredential = 'dockerhub'
+     }
+
      agent any
      stages {
          stage('Linting') {
@@ -17,7 +22,11 @@ pipeline {
 	 }
 	 stage('Upload docker image to docker hub') {
 	     steps {
-		sh './upload_docker.sh'
+	       script {
+		 docker.withRegistry('', registryCredential) {
+		   sh './upload_docker.sh'
+		 }
+	       }
 	     }
 	 }
      }
