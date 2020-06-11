@@ -9,10 +9,7 @@ pipeline {
          stage('Linting') {
              steps {
                  sh 'echo "Hello World and U crazy little programmer"'
-                 sh '''
-                     echo "Multiline shell steps works too"
-                     ls -lah
-                 '''
+		 sh 'tidy -q -e *.html'
              }
          }
 	 stage('Build docker image') {
