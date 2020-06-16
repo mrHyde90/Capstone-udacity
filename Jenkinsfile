@@ -62,6 +62,7 @@ pipeline {
 					sh '''
 						kubectl apply -f ./blue-service.json
 					'''
+					sh 'kubectl get services -o wide'
 				}
 			}
 		}
@@ -78,6 +79,7 @@ pipeline {
 					sh '''
 						kubectl apply -f ./green-service.json
 					'''
+					sh 'kubectl get services -o wide'
 				}
 			}
 		}
