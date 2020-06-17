@@ -26,6 +26,13 @@ pipeline {
 	       }
 	     }
 	 }
+	stage('Setting configurations'){
+		steps {
+			withAWS(region:'us-west-2', credentials:'ND_Cloud') {
+				sh 'aws eks --region us-west-2 update-kubeconfig --name EKS-cluster-ND'
+			}
+		}
+	}
 	 stage('Set kubectl context') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'ND_Cloud') {
